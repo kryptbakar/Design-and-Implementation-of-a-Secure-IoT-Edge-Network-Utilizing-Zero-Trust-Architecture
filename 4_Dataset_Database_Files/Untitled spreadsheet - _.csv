@@ -1,0 +1,5 @@
+Metric,Wired (PC/Server),Wireless (Tablet),Assessment
+Avg RTT,~4ms,~20ms,Excellent
+Max Jitter,19ms,20ms,Moderate
+Packet Loss,0% (Post-ARP),0% (Post-ARP),Stable
+Throughput,Consistent,Consistent,Reliable

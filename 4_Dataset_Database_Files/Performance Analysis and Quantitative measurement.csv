@@ -1,0 +1,5 @@
+Metric,Performance Status,Analysis
+Reliability,Good,100% success on re-pings; initial loss is just ARP.
+Latency,Excellent,Average RTT across all devices is <20ms.
+Jitter,Moderate,Some spikes observed on PC0 and wireless Tablets.
+Path Length,3 Hops,Indicated by the TTL value of 252.

@@ -1,0 +1,136 @@
+================================================================
+  INSTALLATION & EXECUTION GUIDELINES
+  Project: Design and Implementation of a Secure IoT Edge Network
+           Utilizing Zero Trust Architecture
+================================================================
+
+----------------------------------------------------------------
+  REQUIRED SOFTWARE
+----------------------------------------------------------------
+
+- Cisco Packet Tracer (Version 8.2 or later recommended)
+  Download: https://www.netacad.com/courses/packet-tracer
+  (Free registration required via Cisco NetAcad)
+
+- Microsoft Word (2016 or later) or any compatible viewer
+  for reading the project report (.docx)
+
+- Microsoft PowerPoint (2016 or later) or any compatible viewer
+  for viewing the presentation slides (.pptx)
+
+- Any spreadsheet application (Microsoft Excel, Google Sheets)
+  for viewing the dataset/CSV files
+
+----------------------------------------------------------------
+  PROJECT FILES OVERVIEW
+----------------------------------------------------------------
+
+  Main Directory:
+  ├── Design_and_Implementation_of_a_Secure_IoT_Edge_Network
+  │   _Utilizing_Zero_Trust_Architecture.docx  --> Project Report
+  ├── iot_zero_trust_presentation.pptx          --> Slides
+  ├── mehdi_project.pkt                          --> Packet Tracer File
+  ├── Installation_and_Execution_Guidelines.txt  --> This File
+  │
+  └── testing/                                   --> Screenshots & Data
+      ├── *.jpeg / *.png                         --> Output Screenshots
+      └── *.csv                                  --> Performance Data
+
+----------------------------------------------------------------
+  HOW TO INSTALL CISCO PACKET TRACER
+----------------------------------------------------------------
+
+  Step 1: Go to https://www.netacad.com
+  Step 2: Register or log in with a free Cisco NetAcad account
+  Step 3: Navigate to "Resources" > "Download Packet Tracer"
+  Step 4: Download the installer for your operating system
+           (Windows / Linux / macOS)
+  Step 5: Run the installer and follow the on-screen instructions
+  Step 6: Launch Packet Tracer and log in with your NetAcad account
+
+----------------------------------------------------------------
+  HOW TO OPEN & RUN THE PROJECT
+----------------------------------------------------------------
+
+  Step 1: Launch Cisco Packet Tracer
+
+  Step 2: Go to File > Open
+          Navigate to the project folder and select:
+          "mehdi_project.pkt"
+
+  Step 3: The network topology will load automatically.
+          You will see the full IoT Edge Network with
+          Zero Trust Architecture configured.
+
+  Step 4: To run the simulation:
+          - Click the "Simulation" tab at the bottom right
+            (or press ALT + SHIFT + S)
+          - Click "Play" to begin the simulation
+          - Use "Add Simple PDU" (envelope icon) to send
+            test packets between devices
+
+  Step 5: To test specific protocols (ARP, ICMP, OSPF):
+          - In Simulation mode, use Event List filters to
+            select the protocol you want to observe
+          - Send a ping between devices to trigger ICMP
+          - Observe routing tables to verify OSPF convergence
+          - Check ARP tables for MAC resolution
+
+  Step 6: To verify Zero Trust policies:
+          - Click on any device (router/switch/IoT device)
+          - Go to "Config" or "CLI" tab
+          - Review access control lists (ACLs) and
+            security policies applied
+
+----------------------------------------------------------------
+  VIEWING TEST RESULTS / SCREENSHOTS
+----------------------------------------------------------------
+
+  All output screenshots are located in the "testing/" folder.
+
+  - arp.jpeg, arp1.jpeg, arp2.jpeg   --> ARP protocol tests
+  - icmp1.jpeg, icmp2.jpeg           --> ICMP ping test results
+  - icmppath.jpeg                    --> ICMP path trace
+  - ospf.jpeg, ospf2.jpeg            --> OSPF routing verification
+  - pc0.png, pc1.png, pc2.png        --> PC device configurations
+  - server0.png, server1.png,
+    server3.png                      --> Server configurations
+  - tablet0.png, tablet2.png         --> IoT tablet device configs
+
+  CSV files contain quantitative performance analysis data
+  that can be opened in Excel or Google Sheets.
+
+----------------------------------------------------------------
+  TROUBLESHOOTING
+----------------------------------------------------------------
+
+  - If the .pkt file does not open, ensure your Packet Tracer
+    version is 8.2 or later (older versions may not support
+    all features used in this project).
+
+  - If devices show as inactive (red links), switch to
+    Realtime mode and wait for the network to converge
+    (approximately 30-60 seconds for OSPF convergence).
+
+  - If prompted to log in when opening Packet Tracer,
+    use your Cisco NetAcad account credentials.
+
+----------------------------------------------------------------
+  NOTES
+----------------------------------------------------------------
+
+  - This project simulates a secure IoT edge network using
+    Zero Trust Architecture principles including:
+      * Network segmentation
+      * Access control policies (ACLs)
+      * Encrypted communication paths
+      * OSPF dynamic routing
+      * ARP and ICMP verification
+
+  - No physical hardware is required. All testing is done
+    within the Cisco Packet Tracer simulation environment.
+
+================================================================
+  For any issues, refer to the Final Project Report (.docx)
+  for detailed network design and configuration explanations.
+================================================================
