@@ -3,6 +3,9 @@
 ![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
+## Project Description
+Full design and implementation of a Zero Trust security model for IoT edge networks. Includes project report, source code, datasets, screenshots, and installation guidelines.
+
 ## 📋 Project Overview
 
 This project presents a comprehensive design and implementation of a secure IoT Edge Network infrastructure utilizing **Zero Trust Architecture** principles. The network topology is designed using **Cisco Packet Tracer** and demonstrates advanced security concepts including access control lists (ACLs), routing protocols, and device authentication.
