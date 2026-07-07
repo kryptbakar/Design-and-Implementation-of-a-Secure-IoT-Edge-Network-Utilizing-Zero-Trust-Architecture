@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure IoT Edge Network — Zero Trust Architecture</title>
+<style>
+  :root {
+    --bg: #f6f8fa;
+    --bg-alt: #ffffff;
+    --text: #10151b;
+    --text-dim: #4a5568;
+    --accent: #0d7377;
+    --accent-2: #14a19a;
+    --border: #d9e0e6;
+    --card: #ffffff;
+    --code-bg: #eef2f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0e14;
+      --bg-alt: #10161f;
+      --text: #e6edf3;
+      --text-dim: #9aa8b5;
+      --accent: #35d0c9;
+      --accent-2: #1fae9c;
+      --border: #1f2a36;
+      --card: #10161f;
+      --code-bg: #0d1420;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+
+  header.hero {
+    background:
+      radial-gradient(circle at 15% 20%, rgba(53,208,201,0.12), transparent 45%),
+      radial-gradient(circle at 85% 0%, rgba(20,161,154,0.10), transparent 40%),
+      var(--bg-alt);
+    border-bottom: 1px solid var(--border);
+    padding: 72px 0 56px;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  h1 {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    margin: 0 0 14px;
+    letter-spacing: -0.02em;
+  }
+  .tagline {
+    font-size: 1.15rem;
+    color: var(--text-dim);
+    max-width: 640px;
+    margin: 0;
+  }
+  .badges { margin-top: 24px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .badge {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.75rem;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+
+  section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  h2 {
+    font-size: 1.5rem;
+    margin: 0 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    display: inline-block;
+    border-radius: 2px;
+  }
+  p.lead { color: var(--text-dim); max-width: 760px; }
+
+  ul.feature-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  ul.feature-list li {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-size: 0.95rem;
+  }
+  ul.feature-list li strong { color: var(--accent-2); }
+
+  .deliverables {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+  }
+  .deliverables li a {
+    display: block;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .deliverables li a:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .deliverables li a .num {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color: var(--accent);
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .deliverables li a .name { font-weight: 600; }
+
+  .screenshot-figure {
+    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--card);
+    max-width: 640px;
+  }
+  .screenshot-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .screenshot-figure figcaption {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    padding: 10px 14px;
+    border-top: 1px solid var(--border);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .see-more { margin-top: 14px; font-size: 0.9rem; }
+
+  footer {
+    padding: 32px 0 56px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+  footer a { text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Academic Final Year Project · Network Security</span>
+    <h1>Secure IoT Edge Network — Zero Trust Architecture</h1>
+    <p class="tagline">Designing and implementing a Zero Trust security model for IoT edge networks, built and validated in Cisco Packet Tracer.</p>
+    <div class="badges">
+      <span class="badge">Status: Complete</span>
+      <span class="badge">License: MIT</span>
+      <span class="badge">Tool: Cisco Packet Tracer 8.2+</span>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <h2>About</h2>
+    <p class="lead">
+      This project presents the full design and implementation of a secure IoT edge network
+      built on Zero Trust Architecture principles — "never trust, always verify" applied to
+      every device and communication path. The topology combines IoT devices, edge gateways,
+      and servers behind OSPF-based dynamic routing, with access control lists and
+      device-level authentication enforced at every network boundary. Protocol behaviour
+      (ARP, ICMP, OSPF) was captured and measured directly in Cisco Packet Tracer to validate
+      that the security policies hold under real traffic.
+    </p>
+  </div>
+</section>
+
+<section id="highlights">
+  <div class="wrap">
+    <h2>Highlights</h2>
+    <ul class="feature-list">
+      <li><strong>Zero Trust enforcement</strong> — continuous verification of every network communication, no implicit trust between segments.</li>
+      <li><strong>Micro-segmentation</strong> — IoT devices isolated into dedicated VLANs / security zones, separate from core infrastructure.</li>
+      <li><strong>ACL-based access control</strong> — granular access control lists applied at every router and gateway boundary.</li>
+      <li><strong>OSPF dynamic routing</strong> — convergence and neighbor relationships verified under the applied security policies.</li>
+      <li><strong>Protocol-level testing</strong> — ARP resolution, ICMP connectivity, and OSPF routing all captured and documented with screenshots.</li>
+      <li><strong>Quantitative performance analysis</strong> — latency, throughput, and security-overhead metrics collected and exported to CSV.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="deliverables">
+  <div class="wrap">
+    <h2>Deliverables</h2>
+    <ul class="deliverables">
+      <li><a href="https://github.com/kryptbakar/Design-and-Implementation-of-a-Secure-IoT-Edge-Network-Utilizing-Zero-Trust-Architecture/tree/master/1_Final_Project_Report"><span class="num">01</span><span class="name">Final Project Report</span></a></li>
+      <li><a href="https://github.com/kryptbakar/Design-and-Implementation-of-a-Secure-IoT-Edge-Network-Utilizing-Zero-Trust-Architecture/tree/master/2_Source_Code"><span class="num">02</span><span class="name">Source Code (Packet Tracer topology)</span></a></li>
+      <li><a href="https://github.com/kryptbakar/Design-and-Implementation-of-a-Secure-IoT-Edge-Network-Utilizing-Zero-Trust-Architecture/tree/master/3_Presentation_Slides"><span class="num">03</span><span class="name">Presentation Slides</span></a></li>
+      <li><a href="https://github.com/kryptbakar/Design-and-Implementation-of-a-Secure-IoT-Edge-Network-Utilizing-Zero-Trust-Architecture/tree/master/4_Dataset_Database_Files"><span class="num">04</span><span class="name">Dataset &amp; Performance Data</span></a></li>
+      <li><a href="https://github.com/kryptbakar/Design-and-Implementation-of-a-Secure-IoT-Edge-Network-Utilizing-Zero-Trust-Architecture/tree/master/5_Installation_Guidelines"><span class="num">05</span><span class="name">Installation Guidelines</span></a></li>
+      <li><a href="https://github.com/kryptbakar/Design-and-Implementation-of-a-Secure-IoT-Edge-Network-Utilizing-Zero-Trust-Architecture/tree/master/6_Screenshots_Output_Results"><span class="num">06</span><span class="name">Screenshots &amp; Output Results</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <h2>Test Results</h2>
+    <p class="lead">OSPF routing convergence, captured in the Packet Tracer simulation:</p>
+    <figure class="screenshot-figure">
+      <img src="https://raw.githubusercontent.com/kryptbakar/Design-and-Implementation-of-a-Secure-IoT-Edge-Network-Utilizing-Zero-Trust-Architecture/master/6_Screenshots_Output_Results/ospf.jpeg" alt="OSPF routing verification screenshot from the Packet Tracer simulation" loading="lazy">
+      <figcaption>6_Screenshots_Output_Results/ospf.jpeg</figcaption>
+    </figure>
+    <p class="see-more">More ARP, ICMP, and device-configuration captures are in the <a href="https://github.com/kryptbakar/Design-and-Implementation-of-a-Secure-IoT-Edge-Network-Utilizing-Zero-Trust-Architecture/tree/master/6_Screenshots_Output_Results">Screenshots &amp; Output Results</a> folder.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="https://github.com/kryptbakar/Design-and-Implementation-of-a-Secure-IoT-Edge-Network-Utilizing-Zero-Trust-Architecture">View the repository on GitHub</a>
+  </div>
+</footer>
+
+</body>
+</html>
